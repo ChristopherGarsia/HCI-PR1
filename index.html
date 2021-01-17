@@ -1,0 +1,37 @@
+<head>
+
+    <title>HCI PR1</title>
+</head>
+
+<body>
+    <button onclick="openTab('Text')" id="defaultOpen">Text</button>
+    <button onclick="openTab('Images')">Images</button>
+    <button onclick="openTab('Videos')">Videos</button>
+    <button onclick="openTab('Table')">Table</button>
+
+    <div id="Text" class = "tabContent">
+        <h3>Text</h3>
+    </div>
+    <div id="Images" class = "tabContent">
+        <h3>Images</h3>
+    </div>
+    <div id="Videos" class = "tabContent">
+        <h3>Videos</h3>
+    </div>
+    <div id="Table" class = "tabContent">
+        <h3>Table</h3>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabContent;
+            tabContent = document.getElementsByClassName("tabContent");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+        document.getElementById("defaultOpen").click();
+    </script>
+</body>
+
