@@ -1,37 +1,38 @@
 <head>
-
     <title>HCI PR1</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <button onclick="openTab('Text')" id="defaultOpen">Text</button>
-    <button onclick="openTab('Images')">Images</button>
-    <button onclick="openTab('Videos')">Videos</button>
-    <button onclick="openTab('Table')">Table</button>
 
-    <div id="Text" class = "tabContent">
-        <h3>Text</h3>
-    </div>
-    <div id="Images" class = "tabContent">
-        <h3>Images</h3>
-    </div>
-    <div id="Videos" class = "tabContent">
-        <h3>Videos</h3>
-    </div>
-    <div id="Table" class = "tabContent">
-        <h3>Table</h3>
+    <div id="Tab" class="tab">
+        <a href="index.html">Text</a>
+        <a href="images.html">Images</a>
+        <a href="videos.html">Videos</a>
+        <a href="table.html">Table</a>
     </div>
 
-    <script>
-        function openTab(tabName) {
-            var i, tabContent;
-            tabContent = document.getElementsByClassName("tabContent");
-            for (i = 0; i < tabContent.length; i++) {
-                tabContent[i].style.display = "none";
-            }
-            document.getElementById(tabName).style.display = "block";
-        }
-        document.getElementById("defaultOpen").click();
-    </script>
+    <div id="Text" class = "text">
+        <form>
+            <br>
+            <label for="fname">First name:</label>
+            <br>
+            <input type="text" id="fname" name="fname">
+            <br>
+            <label for="lname">Last name:</label>
+            <br>
+            <input type="text" id="lname" name="lname">
+            <br><br>
+            <h4>Favorite Movie</h4>
+            <input type="radio" id="Avengers" name="movie" value="Avengers">
+            <label for="Avengers">Avengers</label><br>
+            <input type="radio" id="DarkKnight" name="movie" value="DarkKnight">
+            <label for="DarkKnight">Dark Knight</label><br>
+            <input type="radio" id="Tenet" name="movie" value="Tenet">
+            <label for="Tenet">Tenet</label><br><br>
+            <input type="submit" value="Done">
+        </form>
+    </div>
+
 </body>
 
