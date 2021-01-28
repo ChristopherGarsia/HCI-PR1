@@ -1,23 +1,90 @@
+<!-- Sources Used -->
+<!-- https://www.bqardi.dk/tutorials/js/image-popup/index.php -->
+<!-- https://stackoverflow.com/questions/37573608/how-to-make-modal-close-on-click-outside/37573735 -->
+
+
 <head>
     <title>HCI PR1</title>
     <link rel="stylesheet" href="styles.css">
 </head>
     
 <body>
+
+    <button class="button" onclick="topFunction()" id="topButton" title="Go to top">Top</button>
+
     <div id="Tab" class="tab">
         <a href="index.html">Text</a>
-        <a href="images.html">Images</a>
+        <a class="current" href="images.html">Images</a>
         <a href="videos.html">Videos</a>
         <a href="table.html">Table</a>
+        <a href="email.html">Email</a>
     </div>
 
-    <div id="images" class = "image">
+    <div id="media" class = "media">
         <img src="1.jpg">
         <img src="2.jpg">
         <img src="3.jpg">
         <img src="4.jpg">
         <img src="5.JPG">
         <img src="6.jpg">
+        <img src="7.jpg">
+        <img src="8.jpg">
+    </div>    
+
+    <div id="modal" class="modal">
+        <div class="modal-container">
+            <img id="modal-content">
+        </div>
     </div>
+
+    <script>
+
+        let images = document.querySelectorAll("img")
+
+        let modal = document.querySelector("#modal");
+        let modalContent = document.querySelector("#modal-content");
+        let modalContainer = document.querySelector(".modal-container");
+
+        modalContent.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            return false;
+        })
+
+        images.forEach( im => {
+            im.addEventListener("click", function(){
+                modal.style.display = "block";
+                console.log(this);
+                modalContent.src = this.src;
+            })
+        })
+
+        modal.addEventListener("click", function() {
+            modal.style.display = "none";
+        }) 
+
+        modalContainer.addEventListener("click", function() {
+            modal.style.display = "none";
+        })
+
+        var topButton = document.getElementById("topButton");
+
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > (0.25) * window.innerHeight || document.documentElement.scrollTop > (0.25) * window.innerHeight) {
+                topButton.style.display = "block";
+            } else {
+                topButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+    </script>
 
 </body>

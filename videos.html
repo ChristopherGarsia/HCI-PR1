@@ -1,23 +1,72 @@
+<!-- Sources Used -->
+<!-- https://stackoverflow.com/questions/37573608/how-to-make-modal-close-on-click-outside/37573735 -->
+
 <head>
     <title>HCI PR1</title>
     <link rel="stylesheet" href="styles.css">
 </head>
     
 <body>
+
     <div id="Tab" class="tab">
         <a href="index.html">Text</a>
         <a href="images.html">Images</a>
-        <a href="videos.html">Videos</a>
+        <a class="current" href="videos.html">Videos</a>
         <a href="table.html">Table</a>
+        <a href="email.html">Email</a>
     </div>
 
-    <div id="videos" class = "video">
-        <video controls>
-            <source src="V1.mov">
+    <div id="media" class = "media">
+        <video id="vid1">
+            <source src="V1.mov" onClickautoplay muted>
         </video>
-        <video controls>
-            <source src="V2.mov">
+        <video id="vid2">
+            <source src="V2.mov" autoplay muted>
+        </video>
+        <video id="vid3">
+            <source src="V3.mov" autoplay muted>
+        </video>
+        <video id="vid4">
+            <source src="V4.mov" autoplay muted>
         </video>
     </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-container-video">
+            <video id="modal-content" controls>
+            </video>
+        </div>
+    </div>
+
+    <script>
+        let videos = document.querySelectorAll("video")
+
+        let modal = document.querySelector("#modal");
+        let modalContent = document.querySelector("#modal-content");
+        let modalContainer = document.querySelector(".modal-container-video");
+
+        modalContent.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            return false;
+        })
+
+        videos.forEach( vid => {
+            vid.addEventListener("click", function(){
+                modal.style.display = "block";
+                modalContent.src = document.getElementById(this.id).getElementsByTagName("source")[0].src;
+
+            })
+        })
+
+        modal.addEventListener("click", function() {
+            modal.style.display = "none";
+        }) 
+
+        modalContainer.addEventListener("click", function() {
+            modal.style.display = "none";
+        })
+    </script>
 
 </body>
